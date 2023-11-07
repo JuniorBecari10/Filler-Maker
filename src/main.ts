@@ -7,7 +7,7 @@ function defineSize(g: Graphics) {
 }
 
 function tick() {
-  console.log(keysPressed);
+  
 }
 
 function render(g: Graphics) {

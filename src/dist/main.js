@@ -6,7 +6,6 @@ function defineSize(g) {
     g.canvas.height = window.innerHeight;
 }
 function tick() {
-    console.log(keysPressed);
 }
 function render(g) {
     g.ctx.fillStyle = "black";
