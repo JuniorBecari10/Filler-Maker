@@ -7,14 +7,15 @@ function defineSize(g: Graphics) {
 }
 
 function tick() {
-
+  console.log(keysPressed);
 }
 
 function render(g: Graphics) {
-
+  g.ctx.fillStyle = "black";
+  g.ctx.fillRect(0, 0, g.canvas.width, g.canvas.height);
 }
 
-function loop(): void {
+function loop() {
   defineSize(g);
 
   tick();

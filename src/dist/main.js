@@ -6,8 +6,11 @@ function defineSize(g) {
     g.canvas.height = window.innerHeight;
 }
 function tick() {
+    console.log(keysPressed);
 }
 function render(g) {
+    g.ctx.fillStyle = "black";
+    g.ctx.fillRect(0, 0, g.canvas.width, g.canvas.height);
 }
 function loop() {
     defineSize(g);
