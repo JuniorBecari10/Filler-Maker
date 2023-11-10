@@ -2,10 +2,13 @@ export class Graphics {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
-        this.setup();
+        this.resetSmoothing();
     }
-    setup() {
+    resetSmoothing() {
         this.ctx.imageSmoothingEnabled = false;
     }
 }
-export default { Graphics };
+export function readImage(id) {
+    return document.getElementById(id);
+}
+export default { Graphics, readImage };

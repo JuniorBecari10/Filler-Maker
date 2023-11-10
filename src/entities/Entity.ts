@@ -1,3 +1,5 @@
+import { Graphics } from "../graphics.js";
+
 export class Entity {
   bounds: Rectangle;
   sprite: HTMLImageElement;
@@ -6,12 +8,13 @@ export class Entity {
     this.bounds = bounds;
     this.sprite = sprite;
   }
-}
 
-function readImage(id: string): HTMLImageElement {
-  return document.getElementById(id) as HTMLImageElement;
+  tick() {}
+
+  render(g: Graphics) {
+    g.ctx.drawImage(this.sprite, this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+  }
 }
 
 export const entities: Entity[] = [];
-
 export default { Entity, entities };

@@ -6,12 +6,16 @@ export class Graphics {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d")!;
 
-    this.setup();
+    this.resetSmoothing();
   }
 
-  setup() {
+  resetSmoothing() {
     this.ctx.imageSmoothingEnabled = false;
   }
 }
 
-export default { Graphics };
+export function readImage(id: string): HTMLImageElement {
+  return document.getElementById(id) as HTMLImageElement;
+}
+
+export default { Graphics, readImage };
