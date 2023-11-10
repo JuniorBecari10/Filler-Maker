@@ -9,11 +9,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="hidden">
+    <img src="./assets/player.png" id="player-spr">
+  </div>
+
   <canvas id="canvas">You must have JavaScript enabled in order to play the game, or this browser isn't supported.</canvas>
 
-  <script src="src/dist/graphics.js"></script>
-  <script src="src/dist/input.js"></script>
-  <script src="src/dist/main.js"></script>
-  <script src="src/dist/index.js"></script>
+  <script type="module" src="src/dist/index.js"></script>
 </body>
 </html>

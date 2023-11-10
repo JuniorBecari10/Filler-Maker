@@ -1,4 +1,4 @@
-class Graphics {
+export class Graphics {
   readonly canvas: HTMLCanvasElement;
   readonly ctx: CanvasRenderingContext2D;
 
@@ -13,3 +13,5 @@ class Graphics {
     this.ctx.imageSmoothingEnabled = false;
   }
 }
+
+export default { Graphics };

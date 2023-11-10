@@ -1,5 +1,5 @@
-const keysPressed: Set<string> = new Set();
-const mouse = {
+export const keysPressed: Set<string> = new Set();
+export const mouse = {
   pos: {
     x: 0,
     y: 0,
@@ -38,6 +38,6 @@ document.addEventListener("mousemove", (e) => {
   mouse.pos.y = e.clientY;
 });
 
-function isKeyPressed(key: string): boolean {
+export function isKeyPressed(key: string): boolean {
   return keysPressed.has(key);
 }

@@ -1,6 +1,5 @@
-"use strict";
-const keysPressed = new Set();
-const mouse = {
+export const keysPressed = new Set();
+export const mouse = {
     pos: {
         x: 0,
         y: 0,
@@ -34,6 +33,6 @@ document.addEventListener("mousemove", (e) => {
     mouse.pos.x = e.clientX;
     mouse.pos.y = e.clientY;
 });
-function isKeyPressed(key) {
+export function isKeyPressed(key) {
     return keysPressed.has(key);
 }

@@ -18,3 +18,7 @@ canvas {
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
 }
+
+.hidden {
+  display: none;
+}

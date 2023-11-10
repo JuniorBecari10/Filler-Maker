@@ -1,5 +1,4 @@
-"use strict";
-class Graphics {
+export class Graphics {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext("2d");
@@ -9,3 +8,4 @@ class Graphics {
         this.ctx.imageSmoothingEnabled = false;
     }
 }
+export default { Graphics };
