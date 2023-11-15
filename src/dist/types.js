@@ -5,3 +5,11 @@ function collide(a, b) {
         a.y < b.y + b.h &&
         a.y + a.h > b.y;
 }
+function pointToRectangle(p, w, h) {
+    return {
+        x: p.x,
+        y: p.y,
+        w: w,
+        h: h,
+    };
+}

@@ -2,14 +2,18 @@
 import { entities } from "./entities/Entity.js";
 import { Player } from "./entities/Player.js";
 import { Graphics, readImage } from "./graphics.js";
+import { tiles } from "./tiles/Tile.js";
+import { NotCollidableTile } from "./tiles/NotCollidableTile.js";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 const g = new Graphics(canvas);
 
-const player = new Player({x: 0, y: 0, w: 32, h: 32}, readImage("player-spr"));
+const player = new Player({x: 0, y: 0, w: 32, h: 32}, readImage("tile-wall"));
 
 export function setup() {
   entities.push(player);
+
+  tiles[2] = new NotCollidableTile({x: 0, y: 0}, readImage("player-spr"));
 }
 
 function defineSize(g: Graphics) {
@@ -22,6 +26,11 @@ function defineSize(g: Graphics) {
 function tick() {
   for (let e of entities)
     e.tick();
+
+  for (let t of tiles) {
+    if (t !== undefined)
+      t.tick()
+  }
 }
 
 function render(g: Graphics) {
@@ -30,6 +39,11 @@ function render(g: Graphics) {
 
   for (let e of entities)
     e.render(g);
+
+  for (let t of tiles) {
+    if (t !== undefined)
+      t.render(g);
+  }
 }
 
 export function loop() {
