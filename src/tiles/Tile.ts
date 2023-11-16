@@ -18,7 +18,23 @@ export abstract class Tile {
   }
 }
 
-function getTile(x: number, y: number): Tile | null {
+export class CollidableTile extends Tile {
+  constructor(pos: Point, sprite: HTMLImageElement) {
+    super(pos, sprite, true);
+  }
+}
+
+export class NotCollidableTile extends Tile {
+  constructor(pos: Point, sprite: HTMLImageElement) {
+    super(pos, sprite, false);
+  }
+}
+
+export function posToIndex(x: number, y: number, w: number): number {
+  return x + (y * w);
+}
+
+export function getTile(x: number, y: number): Tile | null {
   let index = x + (y * MAP_WIDTH);
 
   if (index < 0 || index >= tiles.length)
@@ -32,4 +48,4 @@ export const MAP_WIDTH: number = 20;
 export const MAP_HEIGHT: number = 20;
 
 export const tiles: Tile[] = new Array(MAP_WIDTH * MAP_HEIGHT);
-export default { Tile, TILE_SIZE, MAP_WIDTH, MAP_HEIGHT, tiles };
+export default { Tile, CollidableTile, NotCollidableTile, TILE_SIZE, MAP_WIDTH, MAP_HEIGHT, tiles, posToIndex, getTile };
