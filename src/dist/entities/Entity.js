@@ -1,3 +1,4 @@
+import { camera } from "../main.js";
 import { TILE_SIZE, Tile } from "../tiles/Tile.js";
 export class Entity {
     constructor(bounds, sprite) {
@@ -17,7 +18,7 @@ export class Entity {
     }
     tick() { }
     render(g) {
-        g.ctx.drawImage(this.sprite, this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+        g.ctx.drawImage(this.sprite, this.bounds.x - camera.x, this.bounds.y - camera.y, this.bounds.w, this.bounds.h);
     }
 }
 export const entities = [];

@@ -3,10 +3,15 @@ import { editorRender, editorTick } from "./editor.js";
 import { entities } from "./entities/Entity.js";
 import { Player } from "./entities/Player.js";
 import { Graphics, readImage } from "./graphics.js";
-import { TILE_SIZE, tiles } from "./tiles/Tile.js";
+import { MAP_HEIGHT, MAP_WIDTH, TILE_SIZE, tiles } from "./tiles/Tile.js";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 const g = new Graphics(canvas);
+
+export const camera: Point = {
+  x: 0,
+  y: 0
+}
 
 const player = new Player({x: 0, y: 0, w: 32, h: 32}, readImage("player-spr"));
 
@@ -30,12 +35,18 @@ function tick() {
   for (let e of entities)
     e.tick();
 
+  // centralize camera
+
+
   editorTick();
 }
 
 function render(g: Graphics) {
   g.ctx.fillStyle = "black";
   g.ctx.fillRect(0, 0, g.canvas.width, g.canvas.height);
+
+  g.ctx.fillStyle = "white";
+  g.ctx.fillRect(-camera.x, -camera.y, MAP_WIDTH * TILE_SIZE, MAP_HEIGHT * TILE_SIZE);
 
   for (let t of tiles) {
     if (t !== undefined)
@@ -57,4 +68,4 @@ export function loop() {
   window.requestAnimationFrame(loop);
 }
 
-export default { setup, loop };
+export default { setup, loop, camera };

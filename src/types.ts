@@ -25,3 +25,10 @@ function pointToRectangle(p: Point, w: number, h: number): Rectangle {
     h: h,
   }
 }
+
+function rectangleToPoint(r: Rectangle): Point {
+  return {
+    x: r.x,
+    y: r.y
+  }
+}

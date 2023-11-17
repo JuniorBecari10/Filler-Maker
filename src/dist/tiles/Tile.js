@@ -1,3 +1,4 @@
+import { camera } from "../main.js";
 export class Tile {
     constructor(pos, sprite, collidable) {
         this.pos = pos;
@@ -12,7 +13,10 @@ export class Tile {
     }
     tick() { }
     render(g) {
-        g.ctx.drawImage(this.sprite, this.pos.x * TILE_SIZE, this.pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        // 'sprite' is null when you don't want to have a sprite in this tile
+        if (this.sprite === null)
+            return;
+        g.ctx.drawImage(this.sprite, (this.pos.x * TILE_SIZE) - camera.x, (this.pos.y * TILE_SIZE) - camera.y, TILE_SIZE, TILE_SIZE);
     }
 }
 export class CollidableTile extends Tile {
@@ -35,7 +39,7 @@ export function getTile(x, y) {
     return tiles[index];
 }
 export const TILE_SIZE = 32;
-export const MAP_WIDTH = 20;
+export const MAP_WIDTH = 40;
 export const MAP_HEIGHT = 20;
 export const tiles = new Array(MAP_WIDTH * MAP_HEIGHT);
 export default { Tile, CollidableTile, NotCollidableTile, TILE_SIZE, MAP_WIDTH, MAP_HEIGHT, tiles, posToIndex, getTile };

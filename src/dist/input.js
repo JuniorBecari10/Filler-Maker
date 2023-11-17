@@ -8,10 +8,10 @@ export const mouse = {
     rightPressed: false
 };
 document.addEventListener("keydown", (e) => {
-    keysPressed.add(e.key);
+    keysPressed.add(e.key.toLowerCase());
 });
 document.addEventListener("keyup", (e) => {
-    keysPressed.delete(e.key);
+    keysPressed.delete(e.key.toLowerCase());
 });
 // ---
 document.addEventListener("contextmenu", (e) => {
@@ -34,5 +34,5 @@ document.addEventListener("mousemove", (e) => {
     mouse.pos.y = e.clientY;
 });
 export function isKeyPressed(key) {
-    return keysPressed.has(key);
+    return keysPressed.has(key.toLowerCase());
 }

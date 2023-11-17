@@ -13,3 +13,9 @@ function pointToRectangle(p, w, h) {
         h: h,
     };
 }
+function rectangleToPoint(r) {
+    return {
+        x: r.x,
+        y: r.y
+    };
+}
