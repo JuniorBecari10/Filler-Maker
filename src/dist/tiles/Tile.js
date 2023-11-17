@@ -4,9 +4,15 @@ export class Tile {
         this.sprite = sprite;
         this.collidable = collidable;
     }
+    realPos() {
+        return {
+            x: this.pos.x * TILE_SIZE,
+            y: this.pos.y * TILE_SIZE,
+        };
+    }
     tick() { }
     render(g) {
-        g.ctx.drawImage(this.sprite, this.pos.x, this.pos.y, TILE_SIZE, TILE_SIZE);
+        g.ctx.drawImage(this.sprite, this.pos.x * TILE_SIZE, this.pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 }
 export class CollidableTile extends Tile {

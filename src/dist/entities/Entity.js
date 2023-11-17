@@ -11,7 +11,7 @@ export class Entity {
         }
         else if (other instanceof Tile) {
             let t = other;
-            return collide(this.bounds, pointToRectangle(t.pos, TILE_SIZE, TILE_SIZE));
+            return collide(this.bounds, pointToRectangle(t.realPos(), TILE_SIZE, TILE_SIZE));
         }
         return false;
     }

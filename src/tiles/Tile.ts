@@ -1,6 +1,7 @@
-import { Graphics, readImage } from "../graphics.js";
+import { Graphics } from "../graphics.js";
 
 export abstract class Tile {
+  // 'pos' refers to the array position, in x and y coordinates
   pos: Point;
   sprite: HTMLImageElement;
   collidable: boolean;
@@ -11,10 +12,17 @@ export abstract class Tile {
     this.collidable = collidable;
   }
 
+  realPos(): Point {
+    return {
+      x: this.pos.x * TILE_SIZE,
+      y: this.pos.y * TILE_SIZE,
+    }
+  }
+
   tick() {}
 
   render(g: Graphics) {
-    g.ctx.drawImage(this.sprite, this.pos.x, this.pos.y, TILE_SIZE, TILE_SIZE);
+    g.ctx.drawImage(this.sprite, this.pos.x * TILE_SIZE, this.pos.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
   }
 }
 
