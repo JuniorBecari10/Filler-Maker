@@ -20,7 +20,6 @@ export class Player extends Entity {
   }
 
   tick() {
-    console.log(this.direction);
     if (this.direction === Direction.Idle) {
       if (isKeyPressed("arrowup")) this.direction = Direction.Up;
       else if (isKeyPressed("arrowdown")) this.direction = Direction.Down;
@@ -68,10 +67,16 @@ export class Player extends Entity {
 
 function isOutOfBounds(b: Rectangle, d: Direction): boolean {
   return b.x - (d === Direction.Left ? PLAYER_SPEED : 0) < 0 ||
-         b.x + b.w + (d === Direction.Right ? PLAYER_SPEED : 0) >= MAP_WIDTH * TILE_SIZE ||
+         b.x + b.w + (d === Direction.Right ? PLAYER_SPEED : 0) > MAP_WIDTH * TILE_SIZE ||
          b.y - (d === Direction.Up ? PLAYER_SPEED : 0) < 0 ||
-         b.y + b.h + (d === Direction.Down ? PLAYER_SPEED : 0) >= MAP_HEIGHT * TILE_SIZE;
+         b.y + b.h + (d === Direction.Down ? PLAYER_SPEED : 0) > MAP_HEIGHT * TILE_SIZE;
 }
 
-const PLAYER_SPEED = 40;
+function isFree(nextX: number, nextY: number): boolean {
+  return !(
+    tiles[()]
+  );
+}
+
+const PLAYER_SPEED = 60;
 export default { Player };
