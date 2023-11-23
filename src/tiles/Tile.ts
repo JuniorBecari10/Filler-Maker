@@ -20,6 +20,17 @@ export abstract class Tile {
     }
   }
 
+  bounds(): Rectangle {
+    let { x, y } = this.realPos();
+    
+    return {
+      x: x,
+      y: y,
+      w: TILE_SIZE,
+      h: TILE_SIZE,
+    }
+  }
+
   tick() {}
 
   render(g: Graphics) {

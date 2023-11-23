@@ -11,6 +11,15 @@ export class Tile {
             y: this.pos.y * TILE_SIZE,
         };
     }
+    bounds() {
+        let { x, y } = this.realPos();
+        return {
+            x: x,
+            y: y,
+            w: TILE_SIZE,
+            h: TILE_SIZE,
+        };
+    }
     tick() { }
     render(g) {
         // 'sprite' is null when you don't want to have a sprite in this tile
